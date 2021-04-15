@@ -9,7 +9,7 @@ const getYoutubeLink = ytId => {
     });
 };
 
-const PUSH_SERVER = 'http://192.168.1.14:1338/sheet/data';
+const PUSH_SERVER = 'https://cms.ejoylearning.com/sheet/data';
 const LOG_CONFIG = { 
     name: "bug",
     key: "vuongtao"

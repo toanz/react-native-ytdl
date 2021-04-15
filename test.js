@@ -24,7 +24,7 @@ const reportLog = require('./report.js').default;
 const getYoutubeLink = ytId => {
     if (!ytId) return '';
   
-    return getLink(ytId, { quality: 'highest' }).then(res => res[0].url).catch(err => {
+    return getLink(ytId, { quality: "highestvideo" }).then(res => res[0].url).catch(err => {
       console.log('yt error', err);
       return '';
     });
@@ -60,10 +60,11 @@ const getYoutubeLink = ytId => {
 // getYoutubeLink('OdVvBRNAWAI').then(console.log)
 
 
+// const reportLog = require('./report.js').default;
 // getYoutubeLink('VuNIsY6JdUw').then(console.log)
-reportLog('VuNIsY6JdUw',"11","Vuong","Khong xem duoc","vuong@gmail.com")
-.then(console.log)
-.then(res => getYoutubeLink('ndwGVyEIiqE'))
-.then(console.log)
+// reportLog('VuNIsY6JdUw',"11","Vuong","Khong xem duoc","vuong@gmail.com")
+// .then(console.log)
+// .then(res => getYoutubeLink('ndwGVyEIiqE'))
+// .then(console.log)
 
-// getYoutubeLink('ndwGVyEIiqE').then(console.log)
+getYoutubeLink('B_vfthXx09s').then(console.log)
