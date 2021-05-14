@@ -24,7 +24,7 @@ const reportLog = require('./report.js').default;
 const getYoutubeLink = ytId => {
     if (!ytId) return '';
   
-    return getLink(ytId, { quality: "highestvideo" }).then(res => res[0].url).catch(err => {
+    return getLink(ytId, { quality: "highest" }).then(res => res[0].url).catch(err => {
       console.log('yt error', err);
       return '';
     });
@@ -35,6 +35,8 @@ const getYoutubeLink = ytId => {
     const urls = await getLink(youtubeURL, { quality: 'highest' });
     console.log(urls)
 }
+
+const { getBasicInfo } = require('./lib/info');
 
 // let arrLog = [];
 
@@ -67,4 +69,6 @@ const getYoutubeLink = ytId => {
 // .then(res => getYoutubeLink('ndwGVyEIiqE'))
 // .then(console.log)
 
-getYoutubeLink('B_vfthXx09s').then(console.log)
+// getYoutubeLink('B_vfthXx09s').then(console.log)
+
+getBasicInfo('B_vfthXx09s').then(console.log)

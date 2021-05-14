@@ -1,6 +1,6 @@
 {
   "name": "yt-link",
-  "version": "4.0.4",
+  "version": "4.1.0",
   "description": "test",
   "main": "index.js",
   "dependencies": {
