@@ -7,9 +7,8 @@
     "axios": "^0.21.0",
     "node-fetch": "^2.6.1",
     "querystring": "^0.2.0",
-    "url": "~0.10.1"
-  },
-  "devDependencies": {
+    "url": "~0.10.1",
+    "whatwg-url-without-unicode": "^8.0.0-3",
     "@babel/core": "^7.12.3",
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/preset-env": "^7.12.1",
@@ -20,7 +19,7 @@
     "clone-node-ytdl-core": "./__AUTO_PATCHER__/shell_scripts/clone_node_ytdl_core_to_temp_dir.sh",
     "apply-patches": "./__AUTO_PATCHER__/shell_scripts/apply_custom_implementations_to_temp_dir.sh",
     "copy-to-project-root": "./__AUTO_PATCHER__/shell_scripts/copy_patches_from_temp_dir_to_project_root.sh",
-    "copy-to-test-app": "./__AUTO_PATCHER__/shell_scripts/copy_patches_from_temp_dir_to_test_app.sh",
+    "copy-to-test-app": "./__AUTO_PATCHER__/shell_scripts/copy_patches_and_package_json_from_temp_dir_to_test_app.sh",
     "clean-temp": "./__AUTO_PATCHER__/shell_scripts/clean_temp_dir.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
