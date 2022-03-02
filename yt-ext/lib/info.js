@@ -54,10 +54,10 @@ exports.getBasicInfo = async(id, options) => {
     );
   };
   let info = await pipeline([id, options], validate, retryOptions, [
-    getVideoInfoPage,
+    // getVideoInfoPage,
     getWatchHTMLPage,
     getWatchJSONPage,
-    getVideoInfoPageEmbed,
+    // getVideoInfoPageEmbed,
   ]);
 
   Object.assign(info, {
@@ -280,7 +280,7 @@ const getWatchJSONPage = async(id, options) => {
   let cookie = reqOptions.headers.Cookie || reqOptions.headers.cookie;
   reqOptions.headers = Object.assign({
     'x-youtube-client-name': '1',
-    'x-youtube-client-version': '2.20201203.06.00',
+    'x-youtube-client-version': cver,
     'x-youtube-identity-token': exports.cookieCache.get(cookie || 'browser') || '',
   }, reqOptions.headers);
 
@@ -294,7 +294,7 @@ const getWatchJSONPage = async(id, options) => {
   }
 
   const jsonUrl = getWatchJSONURL(id, options);
-  let body = await miniget(jsonUrl, reqOptions).text();
+  const body = await utils.exposedMiniget(jsonUrl, options, reqOptions).text();
   let parsedBody = parseJSON('watch.json', 'body', body);
   if (parsedBody.reload === 'now') {
     await setIdentityToken('browser', false);
@@ -314,13 +314,14 @@ const getWatchHTMLPage = async(id, options) => {
   let body = await getWatchHTMLPageBody(id, options);
   let info = { page: 'watch' };
   try {
+    cver = utils.between(body, '{"key":"cver","value":"', '"}');
     info.player_response = findJSON('watch.html', 'player_response',
-      body, /\bytInitialPlayerResponse\s*=\s*\{/i, '\n', '{');
+      body, /\bytInitialPlayerResponse\s*=\s*\{/i, '</script>', '{');
   } catch (err) {
     let args = findJSON('watch.html', 'player_response', body, /\bytplayer\.config\s*=\s*{/, '</script>', '{');
     info.player_response = findPlayerResponse('watch.html', args);
   }
-  info.response = findJSON('watch.html', 'response', body, /\bytInitialData("\])?\s*=\s*\{/i, '\n', '{');
+  info.response = findJSON('watch.html', 'response', body, /\bytInitialData("\])?\s*=\s*\{/i, '</script>', '{');
   info.html5player = getHTML5player(body);
   return info;
 };

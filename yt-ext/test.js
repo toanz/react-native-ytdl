@@ -69,6 +69,8 @@ const { getBasicInfo } = require('./lib/info');
 // .then(res => getYoutubeLink('ndwGVyEIiqE'))
 // .then(console.log)
 
-getYoutubeLink('NcRifDitRnU').then(console.log)
+// getYoutubeLink('NcRifDitRnU').then(console.log)
+
+getYoutubeLink('YQHsXMglC9A').then(console.log)
 
 // getBasicInfo('WsptdUFthWI').then((item) => console.log(item))
